@@ -1,0 +1,427 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  font-family: "PingFang SC", "Microsoft Yahei";
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  background-color: #eff0f8;
+  display: flex;
+  width: 100vw;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.contentBox {
+  flex: 1;
+  width: 1px;
+  margin: 30px;
+  background-color: #fff;
+  padding: 30px;
+}
+
+.title {
+  font-size: 26px;
+  font-family: Source Han Sans SC;
+  font-weight: 500;
+  color: rgba(44, 50, 98, 1);
+  line-height: 36px;
+}
+
+.optionBox {
+  padding-top: 20px;
+}
+
+.optTitle {
+  display: block;
+  font-size: 16px;
+  font-family: Source Han Sans SC;
+  font-weight: 400;
+  color: rgba(44, 50, 98, 1);
+  border-left: 4px solid #5654f3;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+.uploadBtn {
+  display: block;
+  width: 100px;
+  height: 32px;
+  background: rgba(86, 84, 243, 1);
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 32px;
+  font-family: Source Han Sans SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.tips {
+  font-size: 12px;
+  font-family: Source Han Sans SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 22px;
+  margin-top: 10px;
+}
+
+#addText {
+  height: 28px;
+  width: 28px;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 10px;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  line-height: 26px;
+  border-radius: 5px;
+  background: rgba(86, 84, 243, 1);
+  vertical-align: middle;
+}
+
+.fontColor {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+#fontFanmily {
+  width: 100px;
+}
+
+.w100 {
+  width: 100px;
+}
+
+.hide {
+  display: none;
+}
+
+.drogParent {
+  width: 700px;
+  margin: 0 auto;
+  position: relative;
+  background-color: yellow;
+}
+
+#editImgEle {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  background: #F2F3F7;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  box-sizing: content-box;
+  background-size: 100% 100%;
+  font-size: 0;
+}
+
+.active {
+  /*border: 4px dashed #ffa000;*/
+}
+
+.drogText {
+  font-size: 20px;
+  outline: none;
+}
+
+.img {
+  position: absolute;
+}
+
+.img1 {
+  left: 20px;
+  top: 30px;
+  width: 300px;
+}
+
+.img2 {
+  left: 60px;
+  top: 70px;
+  width: 160px;
+  transform: rotate(75deg);
+}
+
+.saveimg {
+  display: block;
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  background: rgba(86, 84, 243, 1);
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Source Han Sans SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  line-height: 30px;
+  float: right;
+  margin-top: 10px;
+}
+
+.upload {
+  position: fixed;
+  right: 50px;
+  top: 50px;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.drag {
+  position: absolute;
+  cursor: auto;
+  box-sizing: border-box;
+  z-index: 999;
+  text-align: center;
+}
+
+.drag .dragDot {
+  display: none;
+}
+
+.drag.focus {
+  border: 1px dashed #eee;
+  background: rgba(221, 221, 221, .5);
+}
+
+.drag.focus .dragDot {
+  display: block;
+}
+
+.drag img {
+  height: 100%;
+}
+
+.dragDot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border: 1px solid #888;
+  position: absolute;
+  opacity: 0.8;
+}
+
+.cLeftUp {
+  top: -4px;
+  left: -4px;
+  cursor: nw-resize;
+}
+
+.cUp {
+  top: -4px;
+  left: 50%;
+  margin-left: -4px;
+  cursor: n-resize;
+}
+
+.cDel {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  transform: rotate(45deg);
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border: none;
+}
+
+.cRightUp {
+  top: -4px;
+  right: -4px;
+  cursor: ne-resize;
+}
+
+.cRight {
+  right: -4px;
+  top: 50%;
+  margin-top: -4px;
+  cursor: e-resize;
+}
+
+.cRightDown {
+  bottom: -4px;
+  right: -4px;
+  cursor: se-resize;
+}
+
+.cDown {
+  bottom: -4px;
+  left: 50%;
+  margin-left: -4px;
+  cursor: s-resize;
+}
+
+.cLeftDown {
+  bottom: -4px;
+  left: -4px;
+  cursor: sw-resize;
+}
+
+.cLeft {
+  left: -4px;
+  top: 50%;
+  margin-top: -4px;
+  cursor: w-resize;
+}
+
+.drag.active {
+  border: none;
+  background: none;
+}
+
+.drag.active .dragDot {
+  display: none;
+}
+
+#wrap {
+  margin-top: 10px;
+}
+
+.dragWrap {
+  width: 200px;
+}
+
+.dragWrap img {
+  cursor: pointer;
+}
+
+.cacheEle {
+  display: none;
+}
+
+.cacheEleText {
+  position: absolute;
+  height: 100px;
+}
+
+.cacheEleText .bar {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  white-space: normal;
+  
+}
+
+.drag-item {
+  /*margin: 10px;*/
+}
+
+
+.imgmodal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 1000;
+}
+
+.imgmodal #base64Img {
+  max-width: 80%;
+  max-height: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imgmodal .closeModal {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg);
+  font-size: 80px;
+}
+
+#contentAboutText {
+  display: flex;
+}
+
+
+#contentAboutText .textStyleOpt .inputText {
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 10px;
+  width: 100%;
+  height: 28px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  background: rgba(242, 243, 247, 1);
+  border-radius: 5px;
+}
+
+
+#contentAboutText .textStyleBox {
+  flex: 1;
+  width: 1px;
+  position: relative;
+}
+
+#contentAboutText .textStyleBox .drogTextBox {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #434343;
+  box-sizing: border-box;
+  vertical-align: middle;
+  height: 28px;
+  line-height: 28px;
+  margin: 0 10px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#contentAboutText .textStyleBox .drogText {
+  padding: 0 10px;
+  border: none;
+  color: #434343;
+}
+
+.drogTextTips {
+  position: absolute;
+  left: 50%;
+  bottom: 45px;
+  width: 150px;
+  border-radius: 5px;
+  background-color: #e3eaff;
+  padding: 10px;
+  transform: translateX(-50%);
+  display: none;
+  font-size: 16px;
+}
+
+.drogTextTips:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 20px;
+  height: 20px;
+  background-color: #e3eaff;
+  transform: translateX(-50%) rotate(45deg);
+}

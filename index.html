@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="modules/select2/select2.css">
+</head>
+<body>
+	<div class="contentBox">
+		<div class="optionBox">
+			<div class="optTitle">背景图</div>
+			<div class="content">
+				<label class="uploadBtn" for="uploadBg">点击上传</label>
+				<input class="hide" id="uploadBg" type="file" accept="image/*">
+				<div class="tips">点击上传图片文件</div>
+			</div>
+		</div>
+
+		<div class="optionBox">
+			<div class="optTitle">元素图</div>
+			<div class="content">
+				<label class="uploadBtn" for="uploadOpt">点击上传</label>
+				<div class="tips">点击上传图片文件</div>
+				<input class="hide" id="uploadOpt" type="file" accept="image/*">
+			</div>
+		</div>
+
+		<div class="optionBox">
+			<div class="optTitle">文案输入</div>
+			<div class="content" id="contentAboutText">
+				<div class="textStyleOpt">
+					<select class="fontSize"></select>
+					<select class="fontFanmily"></select>
+					<select class="fontWeight"></select>
+					<input class="fontColor" type="color" value="#ff0000"/>
+				</div>
+				<div class="textStyleBox">
+					<div class="drogTextBox" id="drogTextBox">
+						<div draggable="true" class="drogText text drag-item">T</div>
+						<div class="drogTextTips">拖拽该图标到下方,鼠标左键拖拽,鼠标中键(滚轮键)编辑文案</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 15px;"></div>
+		<div id="editImgEle"></div>
+		<div class="saveimg">下载</div>
+		<div class="cacheEle">
+			<div data-type="cRightDown" class="dragDot cRightDown"></div>
+			<div data-type="cLeftDown" class="dragDot cLeftDown"></div>
+			<div data-type="cRightUp" class="dragDot cRightUp"></div>
+			<div data-type="cLeftUp" class="dragDot cLeftUp"></div>
+			<div data-type="cRight" class="dragDot cRight"></div>
+			<div data-type="cDown" class="dragDot cDown"></div>
+			<div data-type="cLeft" class="dragDot cLeft"></div>
+			<div data-type="cUp" class="dragDot cUp"></div>
+			<div data-type="cDel" class="dragDot cDel">+</div>
+		</div>
+		<div class="imgmodal">
+			<span class="closeModal">+</span>
+			<img id="base64Img" src="" alt="">
+		</div>
+	</div>
+	<script src="modules/jquery2.0.3.js"></script>
+	<script src="modules/colorHex.js"></script>
+	<script src="modules/select2/select2.js"></script>
+	<script src="modules/normalFonts.js"></script>
+	<script src="modules/html2canvas.js"></script>
+	<script src="js/dragAndEdit.js"></script>
+	<script src="js/uploadFile.js"></script>
+
+</body>
+</html>

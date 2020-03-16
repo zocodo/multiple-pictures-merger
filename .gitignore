@@ -1,0 +1,17 @@
+.DS_Store
+node_modules
+node_modules/
+/dist/
+
+# Editor directories and files
+.prettierrc
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+gs
+# .prettierrc
+gs
+.prettierrc
