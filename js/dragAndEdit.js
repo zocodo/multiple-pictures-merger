@@ -253,10 +253,9 @@
     };
   };
 
-
-  ///////////////////////////////////////////////////////////////
   // 图片拖拽功能
   var $container = cArea;   //移入的容器
+  var $containerPositionDom = null;   //移入的容器
   var $dragItem = $('.drag-item'); // 可以拖动的元素
   var eleDrag = null; //当前被拖动的元素
   var endPosition = {
@@ -267,30 +266,35 @@
   $dragItem.on('selectstart', function() {
     return false;
   }).on('dragstart', function(ev) {
+    $containerPositionDom = $('<div class="placeholder">')
+    $container.append($containerPositionDom)
     // 拖拽开始  jquery里面需要使用ev.originalEvent.dataTransfer  原生js使用ev.dataTransfer就行了
     ev.originalEvent.dataTransfer.effectAllowed = 'move';
     eleDrag = ev.target;
+
+    $containerPositionDom.on('dragover', function(ev) {
+      ev.preventDefault();
+      return true;
+    }).on('dragenter', function(ev) {
+      // 给目标元素设置边框效果，提示元素进入
+      // $(this).toggleClass('active');
+      return true;
+    }).on('drop', function(ev) {
+      // 记录当前的坐标，为拖拽结束时，拉伸框定位用
+      endPosition.left = ev.originalEvent.layerX;
+      endPosition.top = ev.originalEvent.layerY;
+      if (eleDrag) {
+        setHtml(eleDrag)
+      }
+      $(this).toggleClass('active');
+    });
+
     return true;
   }).on('dragend', function(ev) {
+    $containerPositionDom.remove();
+    $(document).off('dragover').off('dragenter').off('drop');
     eleDrag = null;
     return false;
-  });
-
-  $container.on('dragover', function(ev) {
-    ev.preventDefault();
-    return true;
-  }).on('dragenter', function(ev) {
-    // 给目标元素设置边框效果，提示元素进入
-    // $(this).toggleClass('active');
-    return true;
-  }).on('drop', function(ev) {
-    // 记录当前的坐标，为拖拽结束时，拉伸框定位用
-    endPosition.left = ev.originalEvent.layerX;
-    endPosition.top = ev.originalEvent.layerY;
-    if (eleDrag) {
-      setHtml(eleDrag)
-    }
-    $(this).toggleClass('active');
   });
 
   // 这里是把拖拽元素，加上一些编辑效果，然后加入到目标元素里面
@@ -324,12 +328,13 @@
     }
 
     $dragEle.addClass(classname).attr('data-type', 'drag').attr('ele-type', eleType).html(dropEle).append(directionBtn);
+    var drogItemNum = $container.find('.drag[data-type="drag"]')
     $dragEle.css({
-      'left': endPosition.left - (100 / 2),
-      'top': endPosition.top - (100 / 2),
+      'left': endPosition.left - $(eleDrag).innerWidth() / 2,
+      'top': endPosition.top - $(eleDrag).innerHeight() / 2,
       'position': 'absolute',
       'box-sizing': 'border-box',
-      'z-index': '999',
+      'z-index': drogItemNum ? drogItemNum.length + 1 : 1,
       'text-align': 'center'
     });
     $container.append($dragEle);

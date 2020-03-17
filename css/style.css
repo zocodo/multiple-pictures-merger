@@ -126,12 +126,22 @@ body {
   height: 400px;
   position: relative;
   overflow: hidden;
-  background: #F2F3F7;
+  background: #f2f3f7;
   max-width: 100%;
   background-repeat: no-repeat;
   box-sizing: content-box;
   background-size: 100% 100%;
   font-size: 0;
+}
+
+#editImgEle .placeholder {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, .1);
 }
 
 .active {

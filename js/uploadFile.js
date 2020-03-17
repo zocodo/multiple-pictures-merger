@@ -57,11 +57,12 @@
       $img = $(eleDrag).clone();
       classname += ' text'
     }
-
+    var drogItemNum = $canDragEle.find('.drag[data-type="drag"]')
     $dragEle.addClass(classname).attr('data-type', 'drag').html($img).append(directionBtn);
     $dragEle.css({
       'left': x || 0,
       'top': y || 0,
+      'z-index': drogItemNum ? drogItemNum.length + 1 : 1
     });
     $canDragEle.append($dragEle);
   }
