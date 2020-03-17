@@ -19,9 +19,11 @@
   $('body').on('mousedown', function(e) {
     var isInCurrentDrogEle = $currentDrogEle ? $currentDrogEle[0].contains(e.target) : true;
     var isInTextStyleOpt = $('.textStyleOpt')[0].contains(e.target);
-    if (isInCurrentDrogEle || isInTextStyleOpt) {
+    if (isInCurrentDrogEle || isInTextStyleOpt || e.button != 0) {
       return
     }
+    isEditing = false;
+    $editingTextEle && $editingTextEle.attr('contentEditable', false);
     $currentDrogEle.removeClass('focus');
     $currentDrogEle = null;
     currentEle = null;
@@ -40,7 +42,7 @@
 
   // 在文本元素里面右键阻止菜单,并且退出文本编辑
   $(document).bind("contextmenu", function(e) {
-    var isInCurrentDrogEle = $currentDrogEle && $currentDrogEle[0].contains(e.target);
+    var isInCurrentDrogEle = cArea[0].contains(e.target);
     if (isInCurrentDrogEle) {
       isEditing = false;
       $editingTextEle && $editingTextEle.attr('contentEditable', false);
